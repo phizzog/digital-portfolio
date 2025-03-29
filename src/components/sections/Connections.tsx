@@ -19,31 +19,31 @@ const Connections = () => {
           </h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-            <div className="order-2 lg:order-1 prose prose-lg max-w-none prose-invert">
-              <p className="mb-4">
+            <div className="order-2 lg:order-1 space-y-6 text-lg">
+              <p>
                 Just a year after my transformative trip to Sweden, something remarkable happened—the 
                 tables turned, and I found myself hosting the Swedish team on American soil. This time, 
-                however, I wasn't the visitor or the student; I was the coach.
+                however, I wasn&apos;t the visitor or the student; I was the coach.
               </p>
               
-              <p className="mb-4">
-                Standing on the edge of the wrestling mat, watching these athletes I'd trained alongside 
+              <p>
+                Standing on the edge of the wrestling mat, watching these athletes I&apos;d trained alongside 
                 now learning from me, I felt a profound sense of the journey coming full circle. The nervousness 
-                I'd felt in Sweden had transformed into confidence, the questions into answers I could now share.
+                I&apos;d felt in Sweden had transformed into confidence, the questions into answers I could now share.
               </p>
               
-              <p className="mb-4">
-                What struck me most was how the connections we'd formed transcended both distance and time. 
+              <p>
+                What struck me most was how the connections we&apos;d formed transcended both distance and time. 
                 Wrestling had initially brought us together, but our bond had evolved far beyond the sport. We 
                 shared meals, stories, and laughter that bridged our cultural differences. Watching American 
-                and Swedish wrestlers training together, learning from each other's styles and approaches, I saw 
+                and Swedish wrestlers training together, learning from each other&apos;s styles and approaches, I saw 
                 a living example of how sport creates understanding across borders.
               </p>
               
-              <p className="mb-4">
-                These weren't just temporary acquaintances or training partners—they had become lifelong connections. 
+              <p>
+                These weren&apos;t just temporary acquaintances or training partners—they had become lifelong connections. 
                 In those moments, watching the Swedish flag displayed proudly in our American wrestling room, I realized 
-                that the true value of my wrestling journey wasn't in the medals or achievements. It was in these 
+                that the true value of my wrestling journey wasn&apos;t in the medals or achievements. It was in these 
                 human connections that would continue long after the final whistle.
               </p>
             </div>
@@ -65,7 +65,7 @@ const Connections = () => {
           
           <div className="bg-neutral-light/10 p-6 rounded-lg shadow-lg backdrop-blur-sm">
             <blockquote className="text-lg md:text-xl font-quote italic text-center mb-4">
-              "The greatest gift of sport isn't what it helps you achieve, but who it helps you become and the connections it creates along the way."
+              &quot;The greatest gift of sport isn&apos;t what it helps you achieve, but who it helps you become and the connections it creates along the way.&quot;
             </blockquote>
             <p className="text-right font-heading font-bold">— Lesson learned on the mat</p>
           </div>

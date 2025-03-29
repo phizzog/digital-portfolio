@@ -21,12 +21,12 @@ const SwedenExperience = () => {
     },
     {
       name: "Enköping",
-      description: "Jarko's hometown where he welcomed me into his home. Here, experiencing different cultures, I realized the journey itself was more valuable than any destination.",
+      description: "Jarko&apos;s hometown where he welcomed me into his home. Here, experiencing different cultures, I realized the journey itself was more valuable than any destination.",
       coordinates: { x: 60, y: 50 }
     },
     {
       name: "Stockholm",
-      description: "Sweden's beautiful capital, where I visited historic sites and reflected on how this journey was shaping my perspective on wrestling and life.",
+      description: "Sweden&apos;s beautiful capital, where I visited historic sites and reflected on how this journey was shaping my perspective on wrestling and life.",
       coordinates: { x: 65, y: 60 }
     }
   ];
@@ -45,19 +45,19 @@ const SwedenExperience = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6 text-lg">
             <p>
-              The moment I stepped off the plane in Sweden in 2023, the butterflies in my stomach reminded me how far from home I truly was. This wasn't just another tournament—it was my first time representing myself internationally in Västerås, without my team or coaches beside me.
+              The moment I stepped off the plane in Sweden in 2023, the butterflies in my stomach reminded me how far from home I truly was. This wasn&apos;t just another tournament—it was my first time representing myself internationally in Västerås, without my team or coaches beside me.
             </p>
             
             <p>
-              I still remember my hands shaking as I met Jarko, a veteran world champion whose reputation preceded him. What began as a training partnership quickly evolved into a friendship. "Wrestling is not about dominating your opponent," he told me over coffee that first morning, his accent thick but his wisdom clear. "It's about understanding yourself." In that moment, something shifted in my perspective.
+              I still remember my hands shaking as I met Jarko, a veteran world champion whose reputation preceded him. What began as a training partnership quickly evolved into a friendship. &quot;Wrestling is not about dominating your opponent,&quot; he told me over coffee that first morning, his accent thick but his wisdom clear. &quot;It&apos;s about understanding yourself.&quot; In that moment, something shifted in my perspective.
             </p>
             
             <p>
-              One of the most profound experiences was visiting Jarko's home in Enköping. As he showed me around his community and introduced me to different cultural aspects of Swedish life, I had an epiphany that would change my outlook forever: while I had been focused on destinations—winning championships, achieving titles—it was actually the journey that held the true value. These life experiences weren't just side effects of pursuing wrestling; they were the hidden treasures of the path itself.
+              One of the most profound experiences was visiting Jarko&apos;s home in Enköping. As he showed me around his community and introduced me to different cultural aspects of Swedish life, I had an epiphany that would change my outlook forever: while I had been focused on destinations—winning championships, achieving titles—it was actually the journey that held the true value. These life experiences weren&apos;t just side effects of pursuing wrestling; they were the hidden treasures of the path itself.
             </p>
             
             <p>
-              By the time I visited Stockholm and eventually boarded my return flight, I wasn't just bringing home memories of beautiful architecture—I was carrying new perspectives that would later prove invaluable when life threw its biggest challenge my way. The friendship formed with Jarko created a connection that spanned continents, and would later become critical during my transition away from competitive wrestling.
+              By the time I visited Stockholm and eventually boarded my return flight, I wasn&apos;t just bringing home memories of beautiful architecture—I was carrying new perspectives that would later prove invaluable when life threw its biggest challenge my way. The friendship formed with Jarko created a connection that spanned continents, and would later become critical during my transition away from competitive wrestling.
             </p>
           </div>
           

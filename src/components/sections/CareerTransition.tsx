@@ -1,11 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 
 const CareerTransition = () => {
-  const videoRef = useRef<HTMLDivElement>(null);
-
   return (
     <section id="transition" className="py-20 bg-neutral-dark text-white">
       <div className="container mx-auto px-4">
@@ -42,7 +39,7 @@ const CareerTransition = () => {
             
             <p>
               What initially felt like an ending was actually a powerful redirection. The journey 
-              hadn't stopped—it had simply taken an unexpected but rewarding turn.
+              hadn&apos;t stopped—it had simply taken an unexpected but rewarding turn.
             </p>
           </div>
           
@@ -83,7 +80,7 @@ const CareerTransition = () => {
               </div>
               <h4 className="font-heading font-bold text-lg mb-2">Pattern Recognition</h4>
               <p className="text-sm">
-                Wrestling taught me to identify patterns in opponents' movements—now I apply that to recognize patterns in data.
+                Wrestling taught me to identify patterns in opponents&apos; movements—now I apply that to recognize patterns in data.
               </p>
             </div>
             
@@ -107,7 +104,7 @@ const CareerTransition = () => {
               </div>
               <h4 className="font-heading font-bold text-lg mb-2">Adaptability</h4>
               <p className="text-sm">
-                Wrestling demands quick strategic adjustments—a skill that's invaluable when working with rapidly evolving AI technologies.
+                Wrestling demands quick strategic adjustments—a skill that&apos;s invaluable when working with rapidly evolving AI technologies.
               </p>
             </div>
           </div>

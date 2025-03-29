@@ -41,8 +41,8 @@ const MedicalVisualization = () => {
               suddenly no longer an option.
             </p>
             <p>
-              Initially devastated, I came to realize that this moment wasn't an ending but a 
-              redirection. The discipline, perseverance, and analytical thinking I'd developed 
+              Initially devastated, I came to realize that this moment wasn&apos;t an ending but a 
+              redirection. The discipline, perseverance, and analytical thinking I&apos;d developed 
               through wrestling were perfectly transferable to other pursuits—particularly my 
               growing interest in artificial intelligence.
             </p>

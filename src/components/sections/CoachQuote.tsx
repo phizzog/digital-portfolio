@@ -26,6 +26,7 @@ const CoachQuote = () => {
   
   // Restart typing effect when visible
   useEffect(() => {
+    const currentQuoteRef = quoteRef.current; // Create stable variable
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -39,15 +40,16 @@ const CoachQuote = () => {
       { threshold: 0.5 }
     );
     
-    if (quoteRef.current) {
-      observer.observe(quoteRef.current);
+    if (currentQuoteRef) {
+      observer.observe(currentQuoteRef);
     }
     
     return () => {
-      if (quoteRef.current) {
-        observer.unobserve(quoteRef.current);
+      if (currentQuoteRef) {
+        observer.unobserve(currentQuoteRef);
       }
     };
+    // Dependency array should include stable variables used inside
   }, [isTyping, displayedText, fullQuote]);
 
   return (
@@ -74,8 +76,8 @@ const CoachQuote = () => {
             </div>
             
             <p>
-              Though he didn't create this famous saying, his way of living it made these words feel uniquely his. 
-              This philosophy became central to how I approach both wrestling and life's challenges.
+              Though he didn&apos;t create this famous saying, his way of living it made these words feel uniquely his. 
+              This philosophy became central to how I approach both wrestling and life&apos;s challenges.
             </p>
           </div>
         </div>

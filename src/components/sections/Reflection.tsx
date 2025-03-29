@@ -40,14 +40,14 @@ const Reflection = () => {
           </p>
           
           <p>
-            My transition to AI development wasn't starting over—it was continuing a journey 
+            My transition to AI development wasn&apos;t starting over—it was continuing a journey 
             with new tools and perspectives. The analytical thinking, perseverance, and adaptability 
             cultivated through wrestling became the foundation for my success in a completely 
             different field.
           </p>
           
           <p className="text-xl font-heading font-bold mt-10">
-            Life's greatest value is found not in reaching destinations, 
+            Life&apos;s greatest value is found not in reaching destinations, 
             but in the transformative power of the journey itself.
           </p>
         </div>

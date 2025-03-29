@@ -33,23 +33,23 @@ const Introduction = () => {
             <p>
               Another significant influence was Coach Miron, whose impressive credentials—a national championship 
               at University of Findlay and a Soviet national championship—made his guidance invaluable. My dad and I 
-              were so committed to my training that we'd make an 8-hour round trip every other weekend for five years 
+              were so committed to my training that we&apos;d make an 8-hour round trip every other weekend for five years 
               straight to attend his wrestling camps. Those long drives, often starting before dawn and ending well after 
               dark, were filled with discussions about technique, mental preparation, and the sacrifices necessary for greatness.
             </p>
             
             <p>
               The deep connections to these mentors naturally led me to the University of Findlay. While Coach Jeffire was 
-              no longer head coach by then, his influence had shaped the program's philosophy. The familiar "Life is a journey, 
-              not a destination" wisdom that he often shared became the foundation of my approach to not just wrestling, but 
+              no longer head coach by then, his influence had shaped the program&apos;s philosophy. The familiar &quot;Life is a journey, 
+              not a destination&quot; wisdom that he often shared became the foundation of my approach to not just wrestling, but 
               to all aspects of life.
             </p>
             
             <p>
               Wrestling transformed from a sport into a way of life. Every match, every victory, and especially every defeat 
               taught me something valuable. The discipline required to maintain weight, the mental fortitude needed to face 
-              opponents, and the resilience to bounce back after losses shaped me in ways I couldn't fully appreciate until 
-              much later. Those countless hours on the road with my dad showed me that commitment isn't just about showing up—it's 
+              opponents, and the resilience to bounce back after losses shaped me in ways I couldn&apos;t fully appreciate until 
+              much later. Those countless hours on the road with my dad showed me that commitment isn&apos;t just about showing up—it&apos;s 
               about going the extra mile, quite literally, for what you believe in.
             </p>
           </div>

@@ -1,191 +1,166 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 
-type Connection = {
+type Friend = {
   id: number;
   name: string;
-  role: string;
-  country: string;
-  coordinates: { x: number; y: number };
+  location: string;
+  story: string;
+  x: number;
+  y: number;
 };
 
 const FriendshipNetwork = () => {
-  const [activeConnection, setActiveConnection] = useState<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [activeFriend, setActiveFriend] = useState<Friend | null>(null);
 
-  const connections: Connection[] = [
-    { 
-      id: 1, 
-      name: "Kenny Snyder", 
-      role: "Wrestler & AI Developer", 
-      country: "USA", 
-      coordinates: { x: 0.25, y: 0.4 } 
-    },
-    { 
-      id: 2, 
-      name: "Jarko Lindberg", 
-      role: "Mentor & European Champion", 
-      country: "Sweden", 
-      coordinates: { x: 0.55, y: 0.24 } 
-    },
-    { 
-      id: 3, 
-      name: "Miguel Santos", 
-      role: "Training Partner", 
-      country: "Brazil", 
-      coordinates: { x: 0.35, y: 0.7 } 
-    },
-    { 
-      id: 4, 
-      name: "Hiroshi Tanaka", 
-      role: "Coach & Technique Specialist", 
-      country: "Japan", 
-      coordinates: { x: 0.85, y: 0.38 } 
-    },
-    { 
-      id: 5, 
-      name: "Alex Dimitrov", 
-      role: "Competition Rival & Friend", 
-      country: "Bulgaria", 
-      coordinates: { x: 0.6, y: 0.35 } 
-    }
-  ];
-
-  useEffect(() => {
-    if (containerRef.current) {
-      setDimensions({
-        width: containerRef.current.offsetWidth,
-        height: 400, // Fixed height
-      });
-    }
-
-    const handleResize = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: 400,
-        });
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Wrap connections in useMemo
+  const connections = useMemo(() => [
+    { id: 1, name: 'Jarko', location: 'Enköping, Sweden', story: 'Met training internationally, taught me about the journey.', x: 150, y: 100 },
+    { id: 2, name: 'Coach Jeffire', location: 'Findlay, Ohio', story: 'My childhood mentor who instilled core values.', x: 300, y: 250 },
+    { id: 3, name: 'College Teammates', location: 'Findlay, Ohio', story: 'The brotherhood that pushed me daily.', x: 450, y: 150 },
+    { id: 4, name: 'AI Mentors', location: 'Graduate Program', story: 'Guiding my transition into a new field.', x: 600, y: 300 },
+    { id: 5, name: 'Swedish Team', location: 'Stockholm/Västerås', story: 'Friendships forged across cultures through sport.', x: 750, y: 100 },
+  ], []); // Empty dependency array ensures it's only created once
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || dimensions.width === 0) return;
-
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas dimensions
-    canvas.width = dimensions.width;
-    canvas.height = dimensions.height;
+    let animationFrameId: number;
+    const particles: { x: number; y: number; vx: number; vy: number; opacity: number }[] = [];
+    const numParticles = 50;
 
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Initialize particles
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.5 + 0.1
+      });
+    }
 
-    // Draw connections from Kenny to everyone else
-    const kenny = connections[0];
-    const kennyX = kenny.coordinates.x * canvas.width;
-    const kennyY = kenny.coordinates.y * canvas.height;
-
-    connections.forEach((connection, i) => {
-      if (i === 0) return; // Skip Kenny (self)
-
-      const x = connection.coordinates.x * canvas.width;
-      const y = connection.coordinates.y * canvas.height;
-
-      // Draw line from Kenny to this connection
-      ctx.beginPath();
-      ctx.moveTo(kennyX, kennyY);
-      ctx.lineTo(x, y);
-      
-      // Style based on whether this connection is active
-      if (activeConnection === connection.id) {
-        ctx.strokeStyle = '#D32F2F'; // primary-red
-        ctx.lineWidth = 3;
-      } else {
-        ctx.strokeStyle = '#4FC3F7'; // secondary-blue
-        ctx.lineWidth = 1.5;
+    const draw = () => {
+      // Responsive canvas size
+      const container = canvas.parentElement;
+      if (container) {
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
       }
       
-      ctx.stroke();
-    });
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  }, [connections, activeConnection, dimensions]);
+      // Draw particles
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.globalAlpha = p.opacity;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1.0;
+
+      // Draw connections lines
+      ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)'; // Light blue, semi-transparent
+      ctx.lineWidth = 1;
+      for (let i = 0; i < connections.length; i++) {
+        for (let j = i + 1; j < connections.length; j++) {
+          ctx.beginPath();
+          ctx.moveTo(connections[i].x * (canvas.width / 900), connections[i].y * (canvas.height / 400));
+          ctx.lineTo(connections[j].x * (canvas.width / 900), connections[j].y * (canvas.height / 400));
+          ctx.stroke();
+        }
+      }
+
+      // Draw friend nodes
+      connections.forEach(friend => {
+        const isHovering = activeFriend && activeFriend.id === friend.id;
+        const radius = isHovering ? 15 : 10;
+        const color = isHovering ? '#D32F2F' : '#4FC3F7'; // Red when active, blue otherwise
+        
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(
+          friend.x * (canvas.width / 900), 
+          friend.y * (canvas.height / 400), 
+          radius, 
+          0, 
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.shadowBlur = isHovering ? 20 : 10;
+        ctx.shadowColor = color;
+        ctx.fill(); // Fill again to apply shadow
+        ctx.shadowBlur = 0; // Reset shadow
+      });
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  // Include connections in the dependency array as it's used inside
+  }, [activeFriend, connections]);
+
+  const handleMouseEnter = (friend: Friend) => {
+    setActiveFriend(friend);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveFriend(null);
+  };
 
   return (
-    <section id="friendship-network" className="py-20 bg-neutral-dark text-neutral-light">
+    <section id="friendship-network" className="py-20 bg-neutral-dark text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">
-          Global Wrestling Connections
+        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-center">
+          The Network That Supported My Journey
         </h2>
-        
-        <p className="text-lg text-center max-w-3xl mx-auto mb-10">
-          Wrestling connected me with remarkable individuals across the globe, 
-          forming a network that would later support my transition to AI development.
-        </p>
-        
-        <div 
-          ref={containerRef}
-          className="relative bg-neutral-medium/20 rounded-lg p-4 mb-8 h-[400px]"
-        >
-          <canvas 
-            ref={canvasRef} 
-            className="absolute inset-0 w-full h-full z-10" 
-          />
+        <div className="relative h-[400px] mb-8">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
           
-          {connections.map((connection) => (
-            <div
-              key={connection.id}
-              className="absolute z-20 transform -translate-x-1/2 -translate-y-1/2"
-              style={{
-                left: `${connection.coordinates.x * 100}%`,
-                top: `${connection.coordinates.y * 100}%`,
-              }}
-              onMouseEnter={() => setActiveConnection(connection.id)}
-              onMouseLeave={() => setActiveConnection(null)}
-            >
-              <div 
-                className={`
-                  w-4 h-4 rounded-full 
-                  ${connection.id === 1 ? 'bg-primary-red' : 'bg-secondary-blue'}
-                  ${activeConnection === connection.id ? 'scale-150' : 'scale-100'}
-                  transition-transform duration-300 cursor-pointer
-                `}
-              />
-              
-              {activeConnection === connection.id && (
-                <div className="absolute top-5 left-1/2 transform -translate-x-1/2 bg-neutral-dark p-3 rounded-lg shadow-lg z-30 w-48">
-                  <p className="font-heading font-bold text-sm">{connection.name}</p>
-                  <p className="text-xs text-neutral-medium mb-1">{connection.country}</p>
-                  <p className="text-xs">{connection.role}</p>
-                </div>
-              )}
-            </div>
-          ))}
+          {/* Render nodes as divs for hover interactions and tooltips */}
+          <div className="absolute inset-0 w-full h-full">
+            {connections.map(friend => (
+              <div
+                key={friend.id}
+                className={`absolute w-5 h-5 rounded-full cursor-pointer transition-all duration-300 transform -translate-x-1/2 -translate-y-1/2 ${activeFriend && activeFriend.id === friend.id ? 'bg-primary-red scale-150 z-20' : 'bg-secondary-blue scale-100 z-10'}`}
+                style={{
+                  left: `${(friend.x / 900) * 100}%`, // Convert absolute coords to percentage
+                  top: `${(friend.y / 400) * 100}%`
+                }}
+                onMouseEnter={() => handleMouseEnter(friend)}
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* Tooltip */} 
+                {activeFriend && activeFriend.id === friend.id && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-neutral-light text-neutral-dark p-3 rounded shadow-lg z-30">
+                    <h3 className="font-heading font-bold text-lg mb-1">{friend.name}</h3>
+                    <p className="text-sm italic mb-1">{friend.location}</p>
+                    <p className="text-sm">{friend.story}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-        
-        <div className="prose prose-invert max-w-3xl mx-auto">
-          <p>
-            These connections represent more than just friendships—they are the foundation of my global perspective. 
-            From Jarko's philosophical approach to wrestling in Sweden to Hiroshi's technical precision from Japan, 
-            each relationship contributed unique insights that shaped my career.
-          </p>
-          <p>
-            When I later transitioned to AI development, this network became invaluable. Miguel, now working in tech in Brazil, 
-            introduced me to programming concepts. Alex, who had also pivoted to a technology career, shared resources and advice 
-            during my transition.
-          </p>
-          <p>
-            The lesson was clear: in wrestling and in life, we are stronger through our connections.
-          </p>
-        </div>
+        <p className="text-center text-lg italic">
+          Hover over the nodes to see the connections that shaped my path—from mentors and teammates to friends made across the globe. Each played a vital role in my growth, reminding me that the journey isn&apos;t walked alone.
+        </p>
       </div>
     </section>
   );
