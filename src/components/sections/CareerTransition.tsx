@@ -1,7 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
-
 const CareerTransition = () => {
   return (
     <section id="transition" className="py-20 bg-neutral-dark text-white">
